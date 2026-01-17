@@ -1,0 +1,1 @@
+Place your database_design.png file in this directory.
