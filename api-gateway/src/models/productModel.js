@@ -60,4 +60,32 @@ const countProducts = async () => {
     return parseInt(result.rows[0].count); // Convert string to integer
 };
 
-module.exports = { createProduct, getAllProducts, countProducts };
+// 4. Update Product (Admin Only)
+const updateProduct = async (id, productData) => {
+    const { name, description, price, stock, category, image_url } = productData;
+    
+    // COALESCE means: "If new value is provided, use it. Otherwise, keep the old value."
+    const query = `
+        UPDATE products 
+        SET name = COALESCE($1, name),
+            description = COALESCE($2, description),
+            price = COALESCE($3, price),
+            stock = COALESCE($4, stock),
+            category = COALESCE($5, category),
+            image_url = COALESCE($6, image_url)
+        WHERE id = $7
+        RETURNING *;
+    `;
+    const values = [name, description, price, stock, category, image_url, id];
+    const result = await pool.query(query, values);
+    return result.rows[0];
+};
+
+// 5. Delete Product (Admin Only)
+const deleteProduct = async (id) => {
+    const query = 'DELETE FROM products WHERE id = $1 RETURNING *';
+    const result = await pool.query(query, [id]);
+    return result.rows[0];
+};
+
+module.exports = { createProduct, getAllProducts, countProducts, updateProduct, deleteProduct };
