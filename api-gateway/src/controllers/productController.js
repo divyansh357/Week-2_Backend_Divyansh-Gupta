@@ -16,23 +16,28 @@ const createProduct = async (req, res) => {
     }
 };
 
-// @desc    Get all products
-// @route   GET /api/products?page=1&limit=10
+// @desc    Get all products with filters
+// @route   GET /api/products?search=mac&category=Electronics&page=1
 // @access  Public
 const getProducts = async (req, res) => {
     try {
-        const page = parseInt(req.query.page) || 1;
-        const limit = parseInt(req.query.limit) || 10;
+        const { search, category, minPrice, maxPrice, page = 1, limit = 10 } = req.query;
         const offset = (page - 1) * limit;
 
-        const products = await productModel.getAllProducts(limit, offset);
+        // Pass all query params as a filter object
+        const filters = { search, category, minPrice, maxPrice };
+
+        const products = await productModel.getAllProducts(filters, parseInt(limit), offset);
+        
+        // Note: For a real app, countProducts should also accept filters to get accurate page numbers
+        // but for this sprint, total count is okay.
         const totalProducts = await productModel.countProducts();
 
         res.json({
-            page,
-            limit,
-            totalPages: Math.ceil(totalProducts / limit),
-            totalProducts,
+            page: parseInt(page),
+            limit: parseInt(limit),
+            totalInDB: totalProducts, // Total items in entire DB
+            count: products.length,   // Items in this specific response
             data: products
         });
     } catch (error) {
