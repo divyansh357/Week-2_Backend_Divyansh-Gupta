@@ -16,6 +16,11 @@ app.use(express.json());
 app.use(cors());   // Allow frontend connection
 app.use(helmet()); // Basic security headers
 
+// Health check endpoint for Render
+app.get('/api/health', (req, res) => {
+    res.status(200).json({ status: 'OK', message: 'Server is running' });
+});
+
 // Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/products', productRoutes);

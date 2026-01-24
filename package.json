@@ -1,0 +1,21 @@
+{
+  "name": "ecommerce-backend",
+  "version": "1.0.0",
+  "description": "E-commerce Backend with API Gateway and Microservices",
+  "main": "api-gateway/src/app.js",
+  "scripts": {
+    "start": "cd api-gateway && npm install && npm start",
+    "dev": "cd api-gateway && npm run dev",
+    "install-all": "npm install && cd api-gateway && npm install && cd ../microservices/notification-service && npm install"
+  },
+  "keywords": ["ecommerce", "api", "microservices"],
+  "author": "",
+  "license": "ISC",
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=8.0.0"
+  },
+  "devDependencies": {
+    "@ljharb/tsconfig": "^0.3.2"
+  }
+}
