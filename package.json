@@ -8,7 +8,11 @@
     "dev": "cd api-gateway && npm run dev",
     "install-all": "npm install && cd api-gateway && npm install && cd ../microservices/notification-service && npm install"
   },
-  "keywords": ["ecommerce", "api", "microservices"],
+  "keywords": [
+    "ecommerce",
+    "api",
+    "microservices"
+  ],
   "author": "Divyansh Kumar Gupta <divyanshkumargupta532@gmail.com>",
   "license": "ISC",
   "engines": {
@@ -17,5 +21,8 @@
   },
   "devDependencies": {
     "@ljharb/tsconfig": "^0.3.2"
+  },
+  "dependencies": {
+    "pg": "^8.17.2"
   }
 }

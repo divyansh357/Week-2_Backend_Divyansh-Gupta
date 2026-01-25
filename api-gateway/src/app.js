@@ -17,7 +17,12 @@ const app = express();
 // Middleware
 app.use(express.json());
 app.use(cors());   // Allow frontend connection
-app.use(helmet()); // Basic security headers
+
+// Configure Helmet with relaxed CSP for Swagger UI
+app.use(helmet({
+    contentSecurityPolicy: false,  // Disable CSP to allow Swagger UI to work
+    crossOriginEmbedderPolicy: false,
+}));
 
 // Apply rate limiting to all API routes
 app.use('/api/', apiLimiter);
