@@ -19,8 +19,10 @@ logs
 .DS_Store
 Thumbs.db
 
-# Coverage
+# Coverage and Test Reports
 coverage/
+*.lcov
+.nyc_output/
 
 # IDEs
 .vscode/

@@ -1,0 +1,2238 @@
+{
+  "info": {
+    "_postman_id": "a5558fb2-eb24-4dd6-80c8-245c857ff91e",
+    "name": "E-Commerce Backend Week 2",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "43639665",
+    "_collection_link": "https://go.postman.co/collection/43639665-a5558fb2-eb24-4dd6-80c8-245c857ff91e?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "1. Auth Module",
+      "item": [
+        {
+          "name": "Create Admin",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"Super Admin\",\r\n  \"email\": \"admin@ecommerce.com\",\r\n  \"password\": \"admin123\",\r\n  \"role\": \"admin\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/auth/register",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "auth",
+                "register"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Create Admin-1",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"name\": \"Admin\",\r\n  \"email\": \"admin@gmail.com\",\r\n  \"password\": \"admin12\",\r\n  \"role\": \"admin\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:5000/api/auth/register",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5000",
+                  "path": [
+                    "api",
+                    "auth",
+                    "register"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "Content-Security-Policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Resource-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Origin-Agent-Cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-DNS-Prefetch-Control",
+                  "value": "off"
+                },
+                {
+                  "key": "X-Download-Options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "191"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"bf-slAXhxQb0s3RPczCOMw/mivKhko\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 17 Jan 2026 06:41:27 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"message\": \"User registered successfully\",\n    \"user\": {\n        \"id\": \"1185edda-1d7c-4dca-91de-407f3f960d88\",\n        \"name\": \"Admin\",\n        \"email\": \"admin@gmail.com\",\n        \"role\": \"admin\",\n        \"created_at\": \"2026-01-17T06:41:27.328Z\"\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Create Customer",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"John Customer\",\r\n  \"email\": \"john@example.com\",\r\n  \"password\": \"123\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/auth/register",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "auth",
+                "register"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Login User (Admin)",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"email\": \"admin@gmail.com\",\r\n  \"password\": \"admin12\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/auth/login",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "auth",
+                "login"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Login User (Admin)",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"email\": \"admin@gmail.com\",\r\n  \"password\": \"admin12\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:5000/api/auth/login",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5000",
+                  "path": [
+                    "api",
+                    "auth",
+                    "login"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "Content-Security-Policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Resource-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Origin-Agent-Cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-DNS-Prefetch-Control",
+                  "value": "off"
+                },
+                {
+                  "key": "X-Download-Options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "331"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"14b-k/vpmy9dJ8CYuA62YzbV20AzvTY\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 17 Jan 2026 07:02:19 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"message\": \"Login successful\",\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjExODVlZGRhLTFkN2MtNGRjYS05MWRlLTQwN2YzZjk2MGQ4OCIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc2ODYzMzMzOSwiZXhwIjoxNzY4NzE5NzM5fQ.-AMoxGLrTMA4GXSlx8hdLuO2Y53aNerPd1umMDWyTrw\",\n    \"user\": {\n        \"id\": \"1185edda-1d7c-4dca-91de-407f3f960d88\",\n        \"name\": \"Admin\",\n        \"role\": \"admin\"\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Get Profile",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjExODVlZGRhLTFkN2MtNGRjYS05MWRlLTQwN2YzZjk2MGQ4OCIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc2ODYzMzcwNiwiZXhwIjoxNzY4NzIwMTA2fQ.SsigMKHB0aPp3BjgnAbHoS_u2o4Wj1JRzG5bmgQeqCo",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/auth/profile",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "auth",
+                "profile"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Get Profile",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:5000/api/auth/profile",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5000",
+                  "path": [
+                    "api",
+                    "auth",
+                    "profile"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "Content-Security-Policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Resource-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Origin-Agent-Cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-DNS-Prefetch-Control",
+                  "value": "off"
+                },
+                {
+                  "key": "X-Download-Options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "141"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"8d-NrZEhH8LE3LegeQL9oqIg3P0xi0\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 17 Jan 2026 07:08:57 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"id\": \"1185edda-1d7c-4dca-91de-407f3f960d88\",\n    \"name\": \"Admin\",\n    \"email\": \"admin@gmail.com\",\n    \"role\": \"admin\",\n    \"created_at\": \"2026-01-17T06:41:27.328Z\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Login User (Customer)",
+          "request": {
+            "method": "GET",
+            "header": []
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "2. Product Module",
+      "item": [
+        {
+          "name": "Create Product (Unauthorized)",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{ \"name\": \"Hacked Item\", \"price\": 0 }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/products",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "products"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Product (Admin)",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjExODVlZGRhLTFkN2MtNGRjYS05MWRlLTQwN2YzZjk2MGQ4OCIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc2ODYzMzMzOSwiZXhwIjoxNzY4NzE5NzM5fQ.-AMoxGLrTMA4GXSlx8hdLuO2Y53aNerPd1umMDWyTrw",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"MacBook Pro M2\",\r\n    \"description\": \"Super fast laptop for coding\",\r\n    \"price\": 1999.99,\r\n    \"stock\": 10,\r\n    \"category\": \"Electronics\",\r\n    \"image_url\": \"http://example.com/macbook.jpg\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/products",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "products"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Create Product (Admin)",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"MacBook Pro M2\",\r\n    \"description\": \"Super fast laptop for coding\",\r\n    \"price\": 1999.99,\r\n    \"stock\": 10,\r\n    \"category\": \"Electronics\",\r\n    \"image_url\": \"http://example.com/macbook.jpg\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:5000/api/products",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5000",
+                  "path": [
+                    "api",
+                    "products"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "Content-Security-Policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Resource-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Origin-Agent-Cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-DNS-Prefetch-Control",
+                  "value": "off"
+                },
+                {
+                  "key": "X-Download-Options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "306"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"132-4mUyjq9kd7MnEC6KYzFtAIJ0Pns\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 17 Jan 2026 07:03:34 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"message\": \"Product created successfully\",\n    \"product\": {\n        \"id\": \"2b23832a-9590-4a40-8e9c-50081497b340\",\n        \"name\": \"MacBook Pro M2\",\n        \"description\": \"Super fast laptop for coding\",\n        \"price\": \"1999.99\",\n        \"stock\": 10,\n        \"category\": \"Electronics\",\n        \"image_url\": \"http://example.com/macbook.jpg\",\n        \"created_at\": \"2026-01-17T07:03:34.318Z\"\n    }\n}"
+            },
+            {
+              "name": "Create Product (Admin)",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Ergonomic Office Chair\",\r\n    \"description\": \"Adjustable lumbar support and breathable mesh.\",\r\n    \"price\": 250.50,\r\n    \"stock\": 10,\r\n    \"category\": \"Home\",\r\n    \"image_url\": \"https://example.com/chair.jpg\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:5000/api/products",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5000",
+                  "path": [
+                    "api",
+                    "products"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "Content-Security-Policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Resource-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Origin-Agent-Cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-DNS-Prefetch-Control",
+                  "value": "off"
+                },
+                {
+                  "key": "X-Download-Options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "323"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"143-95IgT08vF2jgm0c0TyURctw/igk\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 17 Jan 2026 09:03:14 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"message\": \"Product created successfully\",\n    \"product\": {\n        \"id\": \"990e0899-ecdc-412d-896b-7cade53274f9\",\n        \"name\": \"Ergonomic Office Chair\",\n        \"description\": \"Adjustable lumbar support and breathable mesh.\",\n        \"price\": \"250.50\",\n        \"stock\": 10,\n        \"category\": \"Home\",\n        \"image_url\": \"https://example.com/chair.jpg\",\n        \"created_at\": \"2026-01-17T09:03:14.633Z\"\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Fetch All Products",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5000/api/products",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "products"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Fetch All Products",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:5000/api/products",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5000",
+                  "path": [
+                    "api",
+                    "products"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "Content-Security-Policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Resource-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Origin-Agent-Cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-DNS-Prefetch-Control",
+                  "value": "off"
+                },
+                {
+                  "key": "X-Download-Options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "308"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"134-gcxZWlUo8HHMdDA5pj7R/AZaCYo\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 17 Jan 2026 08:57:19 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"page\": 1,\n    \"limit\": 10,\n    \"totalInDB\": 1,\n    \"count\": 1,\n    \"data\": [\n        {\n            \"id\": \"2b23832a-9590-4a40-8e9c-50081497b340\",\n            \"name\": \"MacBook Pro M2\",\n            \"description\": \"Super fast laptop for coding\",\n            \"price\": \"1999.99\",\n            \"stock\": 10,\n            \"category\": \"Electronics\",\n            \"image_url\": \"http://example.com/macbook.jpg\",\n            \"created_at\": \"2026-01-17T07:03:34.318Z\"\n        }\n    ]\n}"
+            },
+            {
+              "name": "Fetch All Products",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:5000/api/products",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5000",
+                  "path": [
+                    "api",
+                    "products"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "Content-Security-Policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Resource-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Origin-Agent-Cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-DNS-Prefetch-Control",
+                  "value": "off"
+                },
+                {
+                  "key": "X-Download-Options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "1419"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"58b-suvhfrOLEbzdTNsusQOSMNXYZEY\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 17 Jan 2026 09:06:57 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"page\": 1,\n    \"limit\": 10,\n    \"totalInDB\": 5,\n    \"count\": 5,\n    \"data\": [\n        {\n            \"id\": \"990e0899-ecdc-412d-896b-7cade53274f9\",\n            \"name\": \"Ergonomic Office Chair\",\n            \"description\": \"Adjustable lumbar support and breathable mesh.\",\n            \"price\": \"250.50\",\n            \"stock\": 10,\n            \"category\": \"Home\",\n            \"image_url\": \"https://example.com/chair.jpg\",\n            \"created_at\": \"2026-01-17T09:03:14.633Z\"\n        },\n        {\n            \"id\": \"080c6290-0d8a-4762-8914-326f731aabf6\",\n            \"name\": \"Nike Air Max 90\",\n            \"description\": \"Classic running shoes, comfortable and stylish.\",\n            \"price\": \"120.00\",\n            \"stock\": 25,\n            \"category\": \"Fashion\",\n            \"image_url\": \"https://example.com/shoes.jpg\",\n            \"created_at\": \"2026-01-17T09:02:58.985Z\"\n        },\n        {\n            \"id\": \"aa625017-7a7a-496c-a3bb-38f38c08011f\",\n            \"name\": \"Wireless Noise Cancelling Headphones\",\n            \"description\": \"Over-ear headphones with 20h battery life.\",\n            \"price\": \"89.99\",\n            \"stock\": 50,\n            \"category\": \"Electronics\",\n            \"image_url\": \"https://example.com/headphones.jpg\",\n            \"created_at\": \"2026-01-17T09:02:45.848Z\"\n        },\n        {\n            \"id\": \"7f920d71-0b9b-48e5-a12e-279dd45548a8\",\n            \"name\": \"Apple MacBook Pro M3\",\n            \"description\": \"Latest model with M3 chip, 16GB RAM, 512GB SSD.\",\n            \"price\": \"1999.99\",\n            \"stock\": 15,\n            \"category\": \"Electronics\",\n            \"image_url\": \"https://example.com/macbook.jpg\",\n            \"created_at\": \"2026-01-17T09:02:31.822Z\"\n        },\n        {\n            \"id\": \"2b23832a-9590-4a40-8e9c-50081497b340\",\n            \"name\": \"MacBook Pro M2\",\n            \"description\": \"Super fast laptop for coding\",\n            \"price\": \"1999.99\",\n            \"stock\": 10,\n            \"category\": \"Electronics\",\n            \"image_url\": \"http://example.com/macbook.jpg\",\n            \"created_at\": \"2026-01-17T07:03:34.318Z\"\n        }\n    ]\n}"
+            }
+          ]
+        },
+        {
+          "name": "Search Products (Name)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5000/api/products?search=Mac",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "products"
+              ],
+              "query": [
+                {
+                  "key": "search",
+                  "value": "Mac"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Search Products (Name)",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:5000/api/products?search=Mac",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5000",
+                  "path": [
+                    "api",
+                    "products"
+                  ],
+                  "query": [
+                    {
+                      "key": "search",
+                      "value": "Mac"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "Content-Security-Policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Resource-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Origin-Agent-Cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-DNS-Prefetch-Control",
+                  "value": "off"
+                },
+                {
+                  "key": "X-Download-Options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "308"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"134-gcxZWlUo8HHMdDA5pj7R/AZaCYo\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 17 Jan 2026 08:58:14 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"page\": 1,\n    \"limit\": 10,\n    \"totalInDB\": 1,\n    \"count\": 1,\n    \"data\": [\n        {\n            \"id\": \"2b23832a-9590-4a40-8e9c-50081497b340\",\n            \"name\": \"MacBook Pro M2\",\n            \"description\": \"Super fast laptop for coding\",\n            \"price\": \"1999.99\",\n            \"stock\": 10,\n            \"category\": \"Electronics\",\n            \"image_url\": \"http://example.com/macbook.jpg\",\n            \"created_at\": \"2026-01-17T07:03:34.318Z\"\n        }\n    ]\n}"
+            },
+            {
+              "name": "Search Products (Name)",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:5000/api/products?search=Mac",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5000",
+                  "path": [
+                    "api",
+                    "products"
+                  ],
+                  "query": [
+                    {
+                      "key": "search",
+                      "value": "Mac"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "Content-Security-Policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Resource-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Origin-Agent-Cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-DNS-Prefetch-Control",
+                  "value": "off"
+                },
+                {
+                  "key": "X-Download-Options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "588"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"24c-apvwoj4Wf0OZl+M5ganST4B0vQY\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 17 Jan 2026 09:07:34 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"page\": 1,\n    \"limit\": 10,\n    \"totalInDB\": 5,\n    \"count\": 2,\n    \"data\": [\n        {\n            \"id\": \"7f920d71-0b9b-48e5-a12e-279dd45548a8\",\n            \"name\": \"Apple MacBook Pro M3\",\n            \"description\": \"Latest model with M3 chip, 16GB RAM, 512GB SSD.\",\n            \"price\": \"1999.99\",\n            \"stock\": 15,\n            \"category\": \"Electronics\",\n            \"image_url\": \"https://example.com/macbook.jpg\",\n            \"created_at\": \"2026-01-17T09:02:31.822Z\"\n        },\n        {\n            \"id\": \"2b23832a-9590-4a40-8e9c-50081497b340\",\n            \"name\": \"MacBook Pro M2\",\n            \"description\": \"Super fast laptop for coding\",\n            \"price\": \"1999.99\",\n            \"stock\": 10,\n            \"category\": \"Electronics\",\n            \"image_url\": \"http://example.com/macbook.jpg\",\n            \"created_at\": \"2026-01-17T07:03:34.318Z\"\n        }\n    ]\n}"
+            }
+          ]
+        },
+        {
+          "name": "Filter Products (Category)",
+          "request": {
+            "method": "GET",
+            "header": []
+          },
+          "response": [
+            {
+              "name": "Filter Products (Category)",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:5000/api/products?category=Electronics",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5000",
+                  "path": [
+                    "api",
+                    "products"
+                  ],
+                  "query": [
+                    {
+                      "key": "category",
+                      "value": "Electronics"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "Content-Security-Policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Resource-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Origin-Agent-Cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-DNS-Prefetch-Control",
+                  "value": "off"
+                },
+                {
+                  "key": "X-Download-Options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "308"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"134-gcxZWlUo8HHMdDA5pj7R/AZaCYo\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 17 Jan 2026 08:59:14 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"page\": 1,\n    \"limit\": 10,\n    \"totalInDB\": 1,\n    \"count\": 1,\n    \"data\": [\n        {\n            \"id\": \"2b23832a-9590-4a40-8e9c-50081497b340\",\n            \"name\": \"MacBook Pro M2\",\n            \"description\": \"Super fast laptop for coding\",\n            \"price\": \"1999.99\",\n            \"stock\": 10,\n            \"category\": \"Electronics\",\n            \"image_url\": \"http://example.com/macbook.jpg\",\n            \"created_at\": \"2026-01-17T07:03:34.318Z\"\n        }\n    ]\n}"
+            },
+            {
+              "name": "Filter Products (Category)",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:5000/api/products?category=Electronics",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5000",
+                  "path": [
+                    "api",
+                    "products"
+                  ],
+                  "query": [
+                    {
+                      "key": "category",
+                      "value": "Electronics"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "Content-Security-Policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Resource-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Origin-Agent-Cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-DNS-Prefetch-Control",
+                  "value": "off"
+                },
+                {
+                  "key": "X-Download-Options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "880"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"370-YkooP7juaf9DgTh988sk6LsSDMk\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 17 Jan 2026 09:07:52 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"page\": 1,\n    \"limit\": 10,\n    \"totalInDB\": 5,\n    \"count\": 3,\n    \"data\": [\n        {\n            \"id\": \"aa625017-7a7a-496c-a3bb-38f38c08011f\",\n            \"name\": \"Wireless Noise Cancelling Headphones\",\n            \"description\": \"Over-ear headphones with 20h battery life.\",\n            \"price\": \"89.99\",\n            \"stock\": 50,\n            \"category\": \"Electronics\",\n            \"image_url\": \"https://example.com/headphones.jpg\",\n            \"created_at\": \"2026-01-17T09:02:45.848Z\"\n        },\n        {\n            \"id\": \"7f920d71-0b9b-48e5-a12e-279dd45548a8\",\n            \"name\": \"Apple MacBook Pro M3\",\n            \"description\": \"Latest model with M3 chip, 16GB RAM, 512GB SSD.\",\n            \"price\": \"1999.99\",\n            \"stock\": 15,\n            \"category\": \"Electronics\",\n            \"image_url\": \"https://example.com/macbook.jpg\",\n            \"created_at\": \"2026-01-17T09:02:31.822Z\"\n        },\n        {\n            \"id\": \"2b23832a-9590-4a40-8e9c-50081497b340\",\n            \"name\": \"MacBook Pro M2\",\n            \"description\": \"Super fast laptop for coding\",\n            \"price\": \"1999.99\",\n            \"stock\": 10,\n            \"category\": \"Electronics\",\n            \"image_url\": \"http://example.com/macbook.jpg\",\n            \"created_at\": \"2026-01-17T07:03:34.318Z\"\n        }\n    ]\n}"
+            },
+            {
+              "name": "Filter Products (Category)",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:5000/api/products?maxPrice=100",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5000",
+                  "path": [
+                    "api",
+                    "products"
+                  ],
+                  "query": [
+                    {
+                      "key": "maxPrice",
+                      "value": "100"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "Content-Security-Policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Resource-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Origin-Agent-Cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-DNS-Prefetch-Control",
+                  "value": "off"
+                },
+                {
+                  "key": "X-Download-Options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "346"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"15a-4tVbViKgS1GPK8La0bZyYQ1kDY4\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 17 Jan 2026 09:08:43 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"page\": 1,\n    \"limit\": 10,\n    \"totalInDB\": 5,\n    \"count\": 1,\n    \"data\": [\n        {\n            \"id\": \"aa625017-7a7a-496c-a3bb-38f38c08011f\",\n            \"name\": \"Wireless Noise Cancelling Headphones\",\n            \"description\": \"Over-ear headphones with 20h battery life.\",\n            \"price\": \"89.99\",\n            \"stock\": 50,\n            \"category\": \"Electronics\",\n            \"image_url\": \"https://example.com/headphones.jpg\",\n            \"created_at\": \"2026-01-17T09:02:45.848Z\"\n        }\n    ]\n}"
+            }
+          ]
+        },
+        {
+          "name": "Update Product (Admin)",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjExODVlZGRhLTFkN2MtNGRjYS05MWRlLTQwN2YzZjk2MGQ4OCIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc2ODY0MjEwNywiZXhwIjoxNzY4NzI4NTA3fQ.MiQIYEVtzd6cwgmhjLCoXiPg4FjTwt7HYkUuZfn93AY",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"price\": 50.00\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/products/080c6290-0d8a-4762-8914-326f731aabf6",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "products",
+                "080c6290-0d8a-4762-8914-326f731aabf6"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Update Product (Admin)",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"price\": 50.00\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:5000/api/products/080c6290-0d8a-4762-8914-326f731aabf6",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5000",
+                  "path": [
+                    "api",
+                    "products",
+                    "080c6290-0d8a-4762-8914-326f731aabf6"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "Content-Security-Policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Resource-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Origin-Agent-Cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-DNS-Prefetch-Control",
+                  "value": "off"
+                },
+                {
+                  "key": "X-Download-Options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "319"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"13f-w1HUBUMnERqUGzWbgXhPlkFIEow\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 17 Jan 2026 09:28:43 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"message\": \"Product updated successfully\",\n    \"product\": {\n        \"id\": \"080c6290-0d8a-4762-8914-326f731aabf6\",\n        \"name\": \"Nike Air Max 90\",\n        \"description\": \"Classic running shoes, comfortable and stylish.\",\n        \"price\": \"50.00\",\n        \"stock\": 25,\n        \"category\": \"Fashion\",\n        \"image_url\": \"https://example.com/shoes.jpg\",\n        \"created_at\": \"2026-01-17T09:02:58.985Z\"\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Delete Product (Admin)",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjExODVlZGRhLTFkN2MtNGRjYS05MWRlLTQwN2YzZjk2MGQ4OCIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc2ODY0MjQ2NiwiZXhwIjoxNzY4NzI4ODY2fQ.gVXVCFzdFzrSiPxmRprVByKQ-Dhs-SO4ZzMbwSCk0CI",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5000/api/products/aa625017-7a7a-496c-a3bb-38f38c08011f",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "products",
+                "aa625017-7a7a-496c-a3bb-38f38c08011f"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Delete Product (Admin)",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:5000/api/products/aa625017-7a7a-496c-a3bb-38f38c08011f",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5000",
+                  "path": [
+                    "api",
+                    "products",
+                    "aa625017-7a7a-496c-a3bb-38f38c08011f"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "Content-Security-Policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Resource-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Origin-Agent-Cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-DNS-Prefetch-Control",
+                  "value": "off"
+                },
+                {
+                  "key": "X-Download-Options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "42"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"2a-a+2htZNpkCDaj0ausIFBiheaYZ4\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 17 Jan 2026 09:36:06 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"message\": \"Product deleted successfully\"\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "3. Cart Module",
+      "item": [
+        {
+          "name": "Add Item to Cart",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijk2YzRjMDdhLWEwNGEtNDlhMi05OGJhLTE0MzYwMGZmNWE1ZSIsInJvbGUiOiJjdXN0b21lciIsImlhdCI6MTc2ODY0NzQ5NiwiZXhwIjoxNzY4NzMzODk2fQ.ns9mgNpZwZde8auv22tECRW4ezA97HK1zLPRm6LTPn4",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"productId\": \"080c6290-0d8a-4762-8914-326f731aabf6\",\r\n    \"quantity\": 1\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/cart",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "cart"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Add Item to Cart",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"productId\": \"080c6290-0d8a-4762-8914-326f731aabf6\",\r\n    \"quantity\": 1\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:5000/api/cart",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5000",
+                  "path": [
+                    "api",
+                    "cart"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "Content-Security-Policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Resource-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Origin-Agent-Cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-DNS-Prefetch-Control",
+                  "value": "off"
+                },
+                {
+                  "key": "X-Download-Options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "199"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"c7-HNaADZcKIKfSIT+7oT3RzZvJUpQ\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 17 Jan 2026 10:58:51 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"message\": \"Item added to cart\",\n    \"item\": {\n        \"id\": \"90a10f1a-d32c-4ad0-8272-ee2fccca08d5\",\n        \"cart_id\": \"0bb34a5f-ff95-4460-a2c3-78db588082fd\",\n        \"product_id\": \"080c6290-0d8a-4762-8914-326f731aabf6\",\n        \"quantity\": 1\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "View Cart",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijk2YzRjMDdhLWEwNGEtNDlhMi05OGJhLTE0MzYwMGZmNWE1ZSIsInJvbGUiOiJjdXN0b21lciIsImlhdCI6MTc2ODY0NzQ5NiwiZXhwIjoxNzY4NzMzODk2fQ.ns9mgNpZwZde8auv22tECRW4ezA97HK1zLPRm6LTPn4",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5000/api/cart",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "cart"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "View Cart",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:5000/api/cart",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5000",
+                  "path": [
+                    "api",
+                    "cart"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "Content-Security-Policy",
+                  "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+                },
+                {
+                  "key": "Cross-Origin-Opener-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Cross-Origin-Resource-Policy",
+                  "value": "same-origin"
+                },
+                {
+                  "key": "Origin-Agent-Cluster",
+                  "value": "?1"
+                },
+                {
+                  "key": "Referrer-Policy",
+                  "value": "no-referrer"
+                },
+                {
+                  "key": "Strict-Transport-Security",
+                  "value": "max-age=31536000; includeSubDomains"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-DNS-Prefetch-Control",
+                  "value": "off"
+                },
+                {
+                  "key": "X-Download-Options",
+                  "value": "noopen"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "SAMEORIGIN"
+                },
+                {
+                  "key": "X-Permitted-Cross-Domain-Policies",
+                  "value": "none"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "271"
+                },
+                {
+                  "key": "ETag",
+                  "value": "W/\"10f-tXGVC5K0XzX/Pufq/RWci64MNQk\""
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 17 Jan 2026 11:00:26 GMT"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"cartId\": \"0bb34a5f-ff95-4460-a2c3-78db588082fd\",\n    \"items\": [\n        {\n            \"id\": \"90a10f1a-d32c-4ad0-8272-ee2fccca08d5\",\n            \"quantity\": 1,\n            \"product_id\": \"080c6290-0d8a-4762-8914-326f731aabf6\",\n            \"name\": \"Nike Air Max 90\",\n            \"price\": \"50.00\",\n            \"image_url\": \"https://example.com/shoes.jpg\"\n        }\n    ],\n    \"total\": \"50.00\"\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "4. Order Module",
+      "item": [
+        {
+          "name": "Place Order",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijk2YzRjMDdhLWEwNGEtNDlhMi05OGJhLTE0MzYwMGZmNWE1ZSIsInJvbGUiOiJjdXN0b21lciIsImlhdCI6MTc2ODY0NzQ5NiwiZXhwIjoxNzY4NzMzODk2fQ.ns9mgNpZwZde8auv22tECRW4ezA97HK1zLPRm6LTPn4",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5000/api/orders",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "orders"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Order History",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijk2YzRjMDdhLWEwNGEtNDlhMi05OGJhLTE0MzYwMGZmNWE1ZSIsInJvbGUiOiJjdXN0b21lciIsImlhdCI6MTc2ODY0NzQ5NiwiZXhwIjoxNzY4NzMzODk2fQ.ns9mgNpZwZde8auv22tECRW4ezA97HK1zLPRm6LTPn4",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5000/api/orders",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "orders"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}

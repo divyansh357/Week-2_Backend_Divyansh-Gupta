@@ -65,4 +65,32 @@ const removeFromCart = async (req, res) => {
     }
 };
 
-module.exports = { addToCart, getCart, removeFromCart };
+// @desc    Update cart item quantity
+// @route   PUT /api/cart/:productId
+// @access  Private
+const updateCartQuantity = async (req, res) => {
+    const userId = req.user.id;
+    const { productId } = req.params;
+    const { quantity } = req.body;
+
+    try {
+        if (!quantity || quantity < 1) {
+            return res.status(400).json({ message: 'Invalid quantity' });
+        }
+
+        const cart = await cartModel.getCartByUserId(userId);
+        if (!cart) return res.status(404).json({ message: 'Cart not found' });
+
+        const updatedItem = await cartModel.updateCartItemQuantity(cart.id, productId, quantity);
+        if (!updatedItem) {
+            return res.status(404).json({ message: 'Item not found in cart' });
+        }
+
+        res.json({ message: 'Cart item updated', item: updatedItem });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Server Error' });
+    }
+};
+
+module.exports = { addToCart, getCart, removeFromCart, updateCartQuantity };

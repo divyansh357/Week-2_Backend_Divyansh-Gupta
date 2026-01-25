@@ -59,10 +59,22 @@ const removeItemFromCart = async (cartId, productId) => {
     return result.rows[0];
 };
 
+// 6. Update Cart Item Quantity
+const updateCartItemQuantity = async (cartId, productId, quantity) => {
+    const query = `
+        UPDATE cart_items 
+        SET quantity = $1 
+        WHERE cart_id = $2 AND product_id = $3 
+        RETURNING *`;
+    const result = await pool.query(query, [quantity, cartId, productId]);
+    return result.rows[0];
+};
+
 module.exports = { 
     createCart, 
     getCartByUserId, 
     addItemToCart, 
     getCartDetails, 
-    removeItemFromCart 
+    removeItemFromCart,
+    updateCartItemQuantity
 };
