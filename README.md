@@ -446,7 +446,7 @@ ISC
 
 **Divyansh Kumar Gupta**  
 📧 Email: divyanshkumargupta532@gmail.com  
-🔗 GitHub: [@yourusername](https://github.com/yourusername)
+🔗 GitHub: [@yourusername](https://github.com/divyansh357)
 
 ---
 
@@ -462,7 +462,3 @@ For questions or issues, please contact: divyanshkumargupta532@gmail.com
 - PostgreSQL community
 - JWT.io for authentication standards
 - Render for deployment platform
-
----
-
-**Made with ❤️ and Node.js**
