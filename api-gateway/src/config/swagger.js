@@ -14,12 +14,12 @@ const options = {
     },
     servers: [
       {
-        url: 'http://localhost:5000',
-        description: 'Development server',
+        url: 'https://ecommerce-api-gateway-dv80.onrender.com',
+        description: 'Production server (Render)',
       },
       {
-        url: 'https://your-app.onrender.com',
-        description: 'Production server',
+        url: 'http://localhost:5000',
+        description: 'Development server',
       },
     ],
     components: {
