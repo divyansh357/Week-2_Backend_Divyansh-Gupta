@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const helmet = require('helmet');
+const path = require('path');
 const swaggerUi = require('swagger-ui-express');
 const swaggerSpec = require('./config/swagger');
 const { apiLimiter } = require('./middleware/rateLimitMiddleware');
@@ -27,12 +28,20 @@ app.use(helmet({
 // Apply rate limiting to all API routes
 app.use('/api/', apiLimiter);
 
-// Swagger Documentation - Home Page
-app.use('/', swaggerUi.serve);
-app.get('/', swaggerUi.setup(swaggerSpec, {
+// Serve static files (frontend)
+app.use('/frontend', express.static(path.join(__dirname, '../public')));
+
+// Swagger Documentation - API docs route
+app.use('/api-docs', swaggerUi.serve);
+app.get('/api-docs', swaggerUi.setup(swaggerSpec, {
     customCss: '.swagger-ui .topbar { display: none }',
     customSiteTitle: 'E-commerce API Documentation',
 }));
+
+// Root route - Redirect to frontend
+app.get('/', (req, res) => {
+    res.redirect('/frontend');
+});
 
 // Health check endpoint for Render
 app.get('/api/health', (req, res) => {
