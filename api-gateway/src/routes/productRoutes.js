@@ -102,12 +102,19 @@ router.post('/', verifyToken, authorizeRoles('admin'), adminLimiter, validate(pr
  *             properties:
  *               name:
  *                 type: string
+ *                 example: Premium Wireless Mouse
  *               description:
  *                 type: string
+ *                 example: Enhanced ergonomic wireless mouse with extended battery
  *               price:
  *                 type: number
+ *                 example: 39.99
+ *               category:
+ *                 type: string
+ *                 example: Electronics
  *               stock:
  *                 type: integer
+ *                 example: 45
  *     responses:
  *       200:
  *         description: Product updated successfully
