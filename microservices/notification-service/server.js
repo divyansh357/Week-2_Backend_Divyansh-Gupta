@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const PORT = 5001; // Runs on a different port than your main API
+const PORT = process.env.PORT || 3001; // Use Render's assigned PORT or 3001 locally
 
 app.use(express.json());
 
