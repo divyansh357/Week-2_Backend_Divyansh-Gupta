@@ -49,6 +49,7 @@ router.get('/', getProducts);
  *               - name
  *               - price
  *               - stock
+ *               - category
  *             properties:
  *               name:
  *                 type: string
@@ -59,6 +60,9 @@ router.get('/', getProducts);
  *               price:
  *                 type: number
  *                 example: 999.99
+ *               category:
+ *                 type: string
+ *                 example: Electronics
  *               stock:
  *                 type: integer
  *                 example: 50
