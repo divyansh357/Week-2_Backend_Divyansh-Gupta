@@ -3,6 +3,7 @@ services:
   - type: web
     name: ecommerce-api-gateway
     env: node
+    plan: free
     region: oregon
     buildCommand: cd api-gateway && npm install
     startCommand: cd api-gateway && npm start
@@ -25,6 +26,7 @@ services:
   - type: web
     name: ecommerce-notification-service
     env: node
+    plan: free
     region: oregon
     buildCommand: cd microservices/notification-service && npm install
     startCommand: cd microservices/notification-service && node server.js
@@ -39,4 +41,5 @@ databases:
   - name: ecommerce-db
     databaseName: ecommerce
     user: ecommerce_user
+    plan: free
     region: oregon
