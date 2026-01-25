@@ -316,7 +316,7 @@
                 
                 <h3>Add to Cart <span class="badge post">POST</span></h3>
                 <div class="endpoint">POST /api/cart</div>
-                <input type="number" id="cartProductId" placeholder="Product ID" value="1">
+                <input type="text" id="cartProductId" placeholder="Product ID" value="1">
                 <input type="number" id="cartQuantity" placeholder="Quantity" value="2">
                 <button onclick="addToCart()">Add to Cart</button>
                 
@@ -326,7 +326,7 @@
                 
                 <h3 style="margin-top: 30px;">Update Cart Quantity <span class="badge put">PUT</span></h3>
                 <div class="endpoint">PUT /api/cart/:productId</div>
-                <input type="number" id="updateProductId" placeholder="Product ID" value="1">
+                <input type="text" id="updateProductId" placeholder="Product ID" value="1">
                 <input type="number" id="updateQuantity" placeholder="New Quantity" value="5">
                 <button onclick="updateCart()">Update Quantity</button>
                 
