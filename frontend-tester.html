@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-commerce API Tester</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            opacity: 0.9;
+            font-size: 1.1em;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .api-section {
+            margin-bottom: 40px;
+            padding: 25px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            transition: all 0.3s;
+        }
+
+        .api-section:hover {
+            border-color: #667eea;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.2);
+        }
+
+        .api-section h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.7em;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+
+        .badge.post { background: #10b981; color: white; }
+        .badge.get { background: #3b82f6; color: white; }
+        .badge.put { background: #f59e0b; color: white; }
+        .badge.delete { background: #ef4444; color: white; }
+
+        input, textarea, button {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1em;
+            transition: all 0.3s;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        .response {
+            margin-top: 20px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            max-height: 400px;
+            overflow-y: auto;
+            white-space: pre-wrap;
+            word-break: break-all;
+        }
+
+        .response.success {
+            border-left-color: #10b981;
+            background: #f0fdf4;
+        }
+
+        .response.error {
+            border-left-color: #ef4444;
+            background: #fef2f2;
+        }
+
+        .token-display {
+            background: #fff3cd;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid #ffc107;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85em;
+            word-break: break-all;
+        }
+
+        .endpoint {
+            background: #e7f3ff;
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+            font-family: 'Courier New', monospace;
+            color: #0066cc;
+        }
+
+        .info-box {
+            background: #e8f4f8;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid #3b82f6;
+        }
+
+        .notification-indicator {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            background: #10b981;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+            margin-right: 8px;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        footer {
+            background: #f8f9fa;
+            padding: 20px;
+            text-align: center;
+            color: #666;
+        }
+
+        .steps {
+            counter-reset: step;
+            list-style: none;
+            padding: 0;
+        }
+
+        .steps li {
+            counter-increment: step;
+            padding: 15px 15px 15px 60px;
+            position: relative;
+            margin-bottom: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+
+        .steps li::before {
+            content: counter(step);
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #667eea;
+            color: white;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🛒 E-commerce API Tester</h1>
+            <p class="subtitle">Interactive Frontend for Testing Backend APIs</p>
+            <p class="subtitle">Deployed on: <strong>https://ecommerce-api-gateway-dv80.onrender.com</strong></p>
+        </header>
+
+        <div class="content">
+            <!-- API Base URL Configuration -->
+            <div class="api-section">
+                <h2>⚙️ Configuration</h2>
+                <label>API Base URL:</label>
+                <input type="text" id="apiUrl" value="https://ecommerce-api-gateway-dv80.onrender.com" placeholder="Enter API URL">
+                <div class="info-box">
+                    💡 <strong>Tip:</strong> You can use <code>http://localhost:5000</code> for local testing or your Render URL for production
+                </div>
+            </div>
+
+            <!-- Step-by-Step Guide -->
+            <div class="api-section">
+                <h2>📖 Step-by-Step API Usage Guide</h2>
+                <ol class="steps">
+                    <li><strong>Register a User:</strong> Create an account with username, email, and password</li>
+                    <li><strong>Login:</strong> Get your JWT token (auto-saved for subsequent requests)</li>
+                    <li><strong>Create Products:</strong> As admin, add products with name, price, category, stock</li>
+                    <li><strong>Browse Products:</strong> View all products, search, filter by category/price</li>
+                    <li><strong>Add to Cart:</strong> Add products with quantities</li>
+                    <li><strong>Update Cart:</strong> Change quantities or remove items</li>
+                    <li><strong>Place Order:</strong> Create order from cart (triggers notification!)</li>
+                    <li><strong>View Orders:</strong> Check your order history</li>
+                </ol>
+            </div>
+
+            <!-- 1. Authentication Section -->
+            <div class="api-section">
+                <h2>🔐 Step 1 & 2: Authentication</h2>
+                
+                <h3>Register <span class="badge post">POST</span></h3>
+                <div class="endpoint">POST /api/auth/register</div>
+                <input type="text" id="registerUsername" placeholder="Username" value="john_doe">
+                <input type="email" id="registerEmail" placeholder="Email" value="john@example.com">
+                <input type="password" id="registerPassword" placeholder="Password" value="SecurePass123">
+                <select id="registerRole">
+                    <option value="customer">Customer</option>
+                    <option value="admin">Admin</option>
+                </select>
+                <button onclick="register()">Register User</button>
+                
+                <h3 style="margin-top: 30px;">Login <span class="badge post">POST</span></h3>
+                <div class="endpoint">POST /api/auth/login</div>
+                <input type="email" id="loginEmail" placeholder="Email" value="john@example.com">
+                <input type="password" id="loginPassword" placeholder="Password" value="SecurePass123">
+                <button onclick="login()">Login & Get Token</button>
+                
+                <div id="authResponse" class="response" style="display:none;"></div>
+                <div id="tokenDisplay" class="token-display" style="display:none;">
+                    <strong>🔑 Your JWT Token:</strong><br>
+                    <span id="tokenValue"></span>
+                </div>
+            </div>
+
+            <!-- 2. Products Section -->
+            <div class="api-section">
+                <h2>📦 Step 3 & 4: Products Management</h2>
+                
+                <h3>Create Product (Admin Only) <span class="badge post">POST</span></h3>
+                <div class="endpoint">POST /api/products</div>
+                <input type="text" id="productName" placeholder="Product Name" value="Wireless Mouse">
+                <textarea id="productDesc" placeholder="Description" rows="2">Ergonomic wireless mouse with 2.4GHz connection</textarea>
+                <input type="number" id="productPrice" placeholder="Price" value="29.99" step="0.01">
+                <input type="text" id="productCategory" placeholder="Category" value="Electronics">
+                <input type="number" id="productStock" placeholder="Stock" value="50">
+                <button onclick="createProduct()">Create Product</button>
+                
+                <h3 style="margin-top: 30px;">Get All Products <span class="badge get">GET</span></h3>
+                <div class="endpoint">GET /api/products</div>
+                <input type="text" id="searchQuery" placeholder="Search (optional)">
+                <input type="text" id="categoryFilter" placeholder="Category Filter (optional)">
+                <button onclick="getProducts()">Get Products</button>
+                
+                <div id="productResponse" class="response" style="display:none;"></div>
+            </div>
+
+            <!-- 3. Cart Section -->
+            <div class="api-section">
+                <h2>🛒 Step 5 & 6: Shopping Cart</h2>
+                
+                <h3>Add to Cart <span class="badge post">POST</span></h3>
+                <div class="endpoint">POST /api/cart</div>
+                <input type="number" id="cartProductId" placeholder="Product ID" value="1">
+                <input type="number" id="cartQuantity" placeholder="Quantity" value="2">
+                <button onclick="addToCart()">Add to Cart</button>
+                
+                <h3 style="margin-top: 30px;">View Cart <span class="badge get">GET</span></h3>
+                <div class="endpoint">GET /api/cart</div>
+                <button onclick="getCart()">View My Cart</button>
+                
+                <h3 style="margin-top: 30px;">Update Cart Quantity <span class="badge put">PUT</span></h3>
+                <div class="endpoint">PUT /api/cart/:productId</div>
+                <input type="number" id="updateProductId" placeholder="Product ID" value="1">
+                <input type="number" id="updateQuantity" placeholder="New Quantity" value="5">
+                <button onclick="updateCart()">Update Quantity</button>
+                
+                <div id="cartResponse" class="response" style="display:none;"></div>
+            </div>
+
+            <!-- 4. Orders Section -->
+            <div class="api-section">
+                <h2>📋 Step 7 & 8: Orders</h2>
+                
+                <h3>Place Order <span class="badge post">POST</span></h3>
+                <div class="endpoint">POST /api/orders</div>
+                <div class="info-box">
+                    <span class="notification-indicator"></span>
+                    <strong>Notification Service:</strong> When you place an order, an email notification is sent via the independent microservice!
+                </div>
+                <input type="text" id="shippingAddress" placeholder="Shipping Address" value="123 Main St, New York, NY 10001">
+                <button onclick="placeOrder()">Place Order (Triggers Notification!)</button>
+                
+                <h3 style="margin-top: 30px;">View Order History <span class="badge get">GET</span></h3>
+                <div class="endpoint">GET /api/orders</div>
+                <button onclick="getOrders()">Get My Orders</button>
+                
+                <div id="orderResponse" class="response" style="display:none;"></div>
+            </div>
+
+            <!-- Notification Service Explanation -->
+            <div class="api-section">
+                <h2><span class="notification-indicator"></span> How Notification Service Works</h2>
+                <div class="info-box">
+                    <h3>🎯 Independent Microservice Architecture</h3>
+                    <p><strong>Deployment:</strong> The notification service runs as a separate service on Render</p>
+                    <ul style="margin: 15px 0; padding-left: 20px;">
+                        <li><strong>API Gateway:</strong> https://ecommerce-api-gateway-dv80.onrender.com</li>
+                        <li><strong>Notification Service:</strong> Runs independently on different URL</li>
+                        <li><strong>Database:</strong> Shared PostgreSQL instance</li>
+                    </ul>
+                    
+                    <h3 style="margin-top: 20px;">📨 How It Works:</h3>
+                    <ol class="steps">
+                        <li>User places an order via API Gateway</li>
+                        <li>API Gateway processes the order and saves to database</li>
+                        <li>API Gateway sends POST request to Notification Service</li>
+                        <li>Notification Service receives order details</li>
+                        <li>Email notification is logged (simulated)</li>
+                        <li>In production, this would use SendGrid/Nodemailer</li>
+                    </ol>
+                    
+                    <h3 style="margin-top: 20px;">🔍 Check Logs:</h3>
+                    <p>Go to Render Dashboard → Notification Service → Logs to see email notifications!</p>
+                    <pre style="background: white; padding: 10px; border-radius: 5px; margin-top: 10px;">
+📧 [NOTIFICATION SERVICE] Sending Email to: john@example.com
+📝 Subject: Order Confirmation #123
+💬 Body: Thank you for your purchase of $59.98
+✅ Email sent successfully!</pre>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>👨‍💻 Developed by Divyansh Kumar Gupta</p>
+            <p>📧 Contact: divyanshkumargupta532@gmail.com</p>
+            <p>🔗 GitHub: <a href="https://github.com/divyansh357/Week-2_Backend_Divyansh-Gupta" target="_blank">Week-2_Backend_Divyansh-Gupta</a></p>
+        </footer>
+    </div>
+
+    <script>
+        let token = '';
+        
+        function getApiUrl() {
+            return document.getElementById('apiUrl').value;
+        }
+        
+        async function register() {
+            const username = document.getElementById('registerUsername').value;
+            const email = document.getElementById('registerEmail').value;
+            const password = document.getElementById('registerPassword').value;
+            const role = document.getElementById('registerRole').value;
+            
+            try {
+                const response = await fetch(`${getApiUrl()}/api/auth/register`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ username, email, password, role })
+                });
+                
+                const data = await response.json();
+                displayResponse('authResponse', data, response.ok);
+                
+                if (response.ok && data.token) {
+                    token = data.token;
+                    displayToken(token);
+                }
+            } catch (error) {
+                displayResponse('authResponse', { error: error.message }, false);
+            }
+        }
+        
+        async function login() {
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            
+            try {
+                const response = await fetch(`${getApiUrl()}/api/auth/login`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email, password })
+                });
+                
+                const data = await response.json();
+                displayResponse('authResponse', data, response.ok);
+                
+                if (response.ok && data.token) {
+                    token = data.token;
+                    displayToken(token);
+                }
+            } catch (error) {
+                displayResponse('authResponse', { error: error.message }, false);
+            }
+        }
+        
+        async function createProduct() {
+            if (!token) {
+                alert('Please login first!');
+                return;
+            }
+            
+            const name = document.getElementById('productName').value;
+            const description = document.getElementById('productDesc').value;
+            const price = parseFloat(document.getElementById('productPrice').value);
+            const category = document.getElementById('productCategory').value;
+            const stock = parseInt(document.getElementById('productStock').value);
+            
+            try {
+                const response = await fetch(`${getApiUrl()}/api/products`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`
+                    },
+                    body: JSON.stringify({ name, description, price, category, stock })
+                });
+                
+                const data = await response.json();
+                displayResponse('productResponse', data, response.ok);
+            } catch (error) {
+                displayResponse('productResponse', { error: error.message }, false);
+            }
+        }
+        
+        async function getProducts() {
+            const search = document.getElementById('searchQuery').value;
+            const category = document.getElementById('categoryFilter').value;
+            
+            let url = `${getApiUrl()}/api/products?`;
+            if (search) url += `search=${search}&`;
+            if (category) url += `category=${category}`;
+            
+            try {
+                const response = await fetch(url);
+                const data = await response.json();
+                displayResponse('productResponse', data, response.ok);
+            } catch (error) {
+                displayResponse('productResponse', { error: error.message }, false);
+            }
+        }
+        
+        async function addToCart() {
+            if (!token) {
+                alert('Please login first!');
+                return;
+            }
+            
+            const productId = parseInt(document.getElementById('cartProductId').value);
+            const quantity = parseInt(document.getElementById('cartQuantity').value);
+            
+            try {
+                const response = await fetch(`${getApiUrl()}/api/cart`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`
+                    },
+                    body: JSON.stringify({ productId, quantity })
+                });
+                
+                const data = await response.json();
+                displayResponse('cartResponse', data, response.ok);
+            } catch (error) {
+                displayResponse('cartResponse', { error: error.message }, false);
+            }
+        }
+        
+        async function getCart() {
+            if (!token) {
+                alert('Please login first!');
+                return;
+            }
+            
+            try {
+                const response = await fetch(`${getApiUrl()}/api/cart`, {
+                    headers: { 'Authorization': `Bearer ${token}` }
+                });
+                
+                const data = await response.json();
+                displayResponse('cartResponse', data, response.ok);
+            } catch (error) {
+                displayResponse('cartResponse', { error: error.message }, false);
+            }
+        }
+        
+        async function updateCart() {
+            if (!token) {
+                alert('Please login first!');
+                return;
+            }
+            
+            const productId = parseInt(document.getElementById('updateProductId').value);
+            const quantity = parseInt(document.getElementById('updateQuantity').value);
+            
+            try {
+                const response = await fetch(`${getApiUrl()}/api/cart/${productId}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`
+                    },
+                    body: JSON.stringify({ quantity })
+                });
+                
+                const data = await response.json();
+                displayResponse('cartResponse', data, response.ok);
+            } catch (error) {
+                displayResponse('cartResponse', { error: error.message }, false);
+            }
+        }
+        
+        async function placeOrder() {
+            if (!token) {
+                alert('Please login first!');
+                return;
+            }
+            
+            const shippingAddress = document.getElementById('shippingAddress').value;
+            
+            try {
+                const response = await fetch(`${getApiUrl()}/api/orders`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`
+                    },
+                    body: JSON.stringify({ shippingAddress })
+                });
+                
+                const data = await response.json();
+                displayResponse('orderResponse', data, response.ok);
+                
+                if (response.ok) {
+                    alert('✅ Order placed! Check Render logs to see the notification service email!');
+                }
+            } catch (error) {
+                displayResponse('orderResponse', { error: error.message }, false);
+            }
+        }
+        
+        async function getOrders() {
+            if (!token) {
+                alert('Please login first!');
+                return;
+            }
+            
+            try {
+                const response = await fetch(`${getApiUrl()}/api/orders`, {
+                    headers: { 'Authorization': `Bearer ${token}` }
+                });
+                
+                const data = await response.json();
+                displayResponse('orderResponse', data, response.ok);
+            } catch (error) {
+                displayResponse('orderResponse', { error: error.message }, false);
+            }
+        }
+        
+        function displayResponse(elementId, data, success) {
+            const element = document.getElementById(elementId);
+            element.style.display = 'block';
+            element.className = `response ${success ? 'success' : 'error'}`;
+            element.textContent = JSON.stringify(data, null, 2);
+        }
+        
+        function displayToken(tokenValue) {
+            document.getElementById('tokenDisplay').style.display = 'block';
+            document.getElementById('tokenValue').textContent = tokenValue;
+        }
+    </script>
+</body>
+</html>
